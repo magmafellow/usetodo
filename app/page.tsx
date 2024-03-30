@@ -1,28 +1,8 @@
-import { link } from "fs";
-import { getAllTodos, getAllUsers } from "./lib/data";
-import CreateForm from "./ui/create-form";
-import DeleteTodo from "./ui/delete-todo";
-
-export default async function Home() {
-    const todos = await getAllTodos();
-    const users = await getAllUsers();
-
-    return (
-        <main className='min-h-screen bg-gray-300 flex justify-center items-center'>
-            <div>
-                <CreateForm />
-                <ul className='bg-white p-2 flex flex-col gap-2'>
-                    {todos.map((todo, index) => (
-                        <li
-                            key={index}
-                            className='text-lg border-2 flex justify-between items-center border-gray-900 py-0.5 px-1'
-                        >
-                            <span>{todo.text}</span>
-                            <DeleteTodo id={todo.id} />
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </main>
-    );
+export default function Page() {
+  return (
+    <div className="text-red-500 h-screen flex justify-center items-center text-4xl flex-col gap-10">
+      <div>Root</div>
+      <div className="text-md text-stone-700">go to /todo</div>
+    </div>
+  );
 }

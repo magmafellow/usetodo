@@ -5,13 +5,13 @@ import { Todo, User } from "./definitions";
 export const pool = new Pool({
     host: "localhost",
     user: "postgres",
-    password: "mac7&",
+    password: "win7&",
     port: 5432,
     database: "usetodo",
 });
 
 export async function getAllTodos(): Promise<Todo[]> {
-    noStore();
+    noStore()
     try {
         const res = await pool.query("SELECT * FROM todos");
         return res.rows;
