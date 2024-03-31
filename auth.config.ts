@@ -5,7 +5,7 @@ export const authConfig = {
     signIn: '/login',
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
+    authorized: function ({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnTodo = nextUrl.pathname.startsWith('/todo');
       if(isOnTodo){
