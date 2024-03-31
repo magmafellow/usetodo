@@ -1,5 +1,6 @@
 "use server";
 
+import { isRedirectError } from "next/dist/client/components/redirect";
 import { z } from "zod";
 import { pool } from "./data";
 import { revalidatePath } from "next/cache";
@@ -75,19 +76,21 @@ export async function authenticate(
   formData: FormData
 ) {
   try {
-    signIn("credentials", formData);
-    console.log('after signIn')
+    const success = await signIn("credentials", formData);
+    console.log(1)
+    return undefined
   } catch (error) {
-    console.log('catch block is reached')
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
+          console.log('credentials error')
           return "Invalid credentials.";
         default:
+          console.log('something went wrong')
           return "Something went wrong.";
       }
     }
     console.log('Error from authenticate, actions')
-    throw error;
+    throw error
   }
 }

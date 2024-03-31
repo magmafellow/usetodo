@@ -1,3 +1,4 @@
+import { signOut } from "@/auth";
 import { getAllTodos, getAllUsers } from "../lib/data";
 import CreateForm from "../ui/create-form";
 import DeleteTodo from "../ui/delete-todo";
@@ -22,6 +23,14 @@ export default async function Home() {
                     ))}
                 </ul>
             </div>
+            <form className="absolute top-3 right-7" action={async () => {
+                'use server'
+                await signOut();
+            }}>
+                <button className="bg-slate-400 py-1 px-2">
+                    Sign Out
+                </button>
+            </form>
         </main>
     );
 }

@@ -12,7 +12,6 @@ export const authConfig = {
         if(isLoggedIn) return true;
         return false;
       } else if (isLoggedIn) {
-        console.log('nextUrl:', nextUrl)
         return Response.redirect(new URL('/todo', nextUrl));
       }
       return true;
